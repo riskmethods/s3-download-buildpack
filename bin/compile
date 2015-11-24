@@ -1,6 +1,6 @@
 #!/bin/bash
 # bin/compile <build-dir> <cache-dir> <env-dir>
-# See https://github.com/paulhammond/s3-tarball-buildpack for license and docs
+# See https://github.com/paleozogt/s3-download-buildpack for license and docs
 
 working=$(pwd)
 mkdir -p "$2"
@@ -75,11 +75,11 @@ while read line; do
 			export "$line"
 			;;
 		s3://*)
-			echo "-----> s3tarballing $line"
-			s3simple get "$line" | tar -zx
+			echo "-----> s3 downloading $line"
+			s3simple get "$line" > `basename $line`
 			;;
 		*)
 			echo "unknown line $line"
 			;;
 	esac
-done < .buildpack-s3-tarballs
+done < .buildpack-s3-downloads
