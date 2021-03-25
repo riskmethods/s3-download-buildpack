@@ -72,13 +72,13 @@ done
 while read line; do
 	case "$line" in
 		AWS_*=*)
-			export "$line"
+			echo "export $line"
 			;;
 		s3://*)
 			echo "-----> processing:$line"
-			lineArray = ($line)
-			source = lineArray[0]
-			destination = lineArray[1]
+			IFS=' ' read -r -a lineArray <<< "$line"
+			source="${lineArray[0]}"
+			destination="${lineArray[1]}"
 			echo "Downloading $source into $destination"
 			s3simple get "$source" > $destination
 			;;
