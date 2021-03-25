@@ -81,9 +81,12 @@ while read line; do
 			destination="${lineArray[1]}"
 			echo "Downloading $source into $destination"
 			s3simple get "$source" > $destination
+			echo "Downloaded."
 			;;
 		*)
 			echo "unknown line $line"
 			;;
 	esac
 done < .buildpack-s3-downloads
+
+echo "Loading from S3 completed."
