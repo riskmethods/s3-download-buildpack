@@ -75,8 +75,12 @@ while read line; do
 			export "$line"
 			;;
 		s3://*)
-			echo "-----> s3 downloading $line"
-			s3simple get "$line" > `basename $line`
+			echo "-----> processing:$line"
+			lineArray = ($line)
+			source = lineArray[0]
+			destination = lineArray[1]
+			echo "Downloading $source into $destination"
+			s3simple get "$source" > $destination
 			;;
 		*)
 			echo "unknown line $line"

@@ -6,5 +6,6 @@ if [ -f $1/.buildpack-s3-downloads ]; then
     echo "S3Download"
     exit 0
 else
+    echo "There is no .buildpack-s3-downloads file"
     exit 1
 fi

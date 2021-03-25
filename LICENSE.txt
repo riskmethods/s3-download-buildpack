@@ -1,3 +1,7 @@
+Licence type: MIT
+
+License file copied from the original repository (https://github.com/opendoor-labs/s3-download-buildpack) while forking:
+
 Copyright (c) 2014 Paul Hammond
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
