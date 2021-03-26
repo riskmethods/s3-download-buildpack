@@ -81,7 +81,7 @@ while read line; do
 			destination="${lineArray[1]}"
 			echo "Downloading $source into $destination"
 			s3simple get "$source" > $destination
-			echo "MD5 of the downloaded file: $(md5 $destination)"
+			echo "Checksum: $(md5sum $destination)"
 			;;
 		*)
 			echo "unknown line $line"
