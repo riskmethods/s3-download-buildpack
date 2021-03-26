@@ -81,6 +81,7 @@ while read line; do
 			destination="${lineArray[1]}"
 			echo "Downloading $source into $destination"
 			s3simple get "$source" > $destination
+			echo "${md5 $destination}"
 			echo "Downloaded."
 			;;
 		*)
