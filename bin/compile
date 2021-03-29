@@ -80,6 +80,7 @@ while read line; do
 			source="${lineArray[0]}"
 			destination="${lineArray[1]}"
 			echo "Downloading $source into $destination"
+			mkdir -p "$(dirname "$destination")"
 			s3simple get "$source" > $destination
 			echo "Checksum: $(md5sum $destination)"
 			;;
