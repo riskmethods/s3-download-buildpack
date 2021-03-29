@@ -12,8 +12,8 @@ buckets. It gives you a way of deploying pre-built code to
     $ cat .buildpack-s3-downloads
     AWS_ACCESS_KEY_ID=AKIA0000000000000000
     AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    s3://bucket/path/to/tarball.tgz
-    s3://bucket/path/to/somethingelse.zip
+    s3://bucket/path/to/tarball.tgz /output_path/filename.tgz
+    s3://bucket/path/to/somethingelse.zip /output_path/some_other_file.zip
 
 You probably want to use an [IAM key](http://aws.amazon.com/iam/) with limited
 access. This code only requires `s3:GetObject` access to files.
@@ -27,27 +27,7 @@ file have precedence over keys in the config system.
     $ heroku config:add AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
     $ cat .buildpack-s3-downloads
-    s3://bucket/path/to/tarball.tgz
-
-In most cases you'll use this buildpack in conjunction with other buildpacks
-using [heroku-buildpack-multi](https://github.com/ddollar/heroku-buildpack-multi):
-
-    $ heroku config:add BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi.git
-
-    $ cat .buildpack-s3-downloads
-    AWS_ACCESS_KEY_ID=AKIA0000000000000000
-    AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-    s3://bucket/path/to/tarball.tgz
-
-    $ cat .buildpacks
-    https://github.com/paleozogt/s3-download-buildpack.git
-    https://github.com/ryandotsmith/null-buildpack.git
-
-## See also
-
-  * [heroku-buildpack-vendorbinaries](https://github.com/peterkeen/heroku-buildpack-vendorbinaries)
-  * [s3simple](https://github.com/paleozogt/s3simple)
-  * [Heroku Slug API](https://blog.heroku.com/archives/2013/12/20/programmatically_release_code_to_heroku_using_the_platform_api)
+    s3://bucket/path/to/tarball.tgz /output_path/filename.tgz
 
 ## Licence
 
