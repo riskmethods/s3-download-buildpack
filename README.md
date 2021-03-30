@@ -5,6 +5,12 @@ that can download files from private [Amazon S3](http://aws.amazon.com/s3/)
 buckets. It gives you a way of deploying pre-built code to
 [Heroku](http://www.heroku.com/) without making it publicly accessible.
 
+## Configuration
+
+1. Add `https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku-community/awscli.tgz` buildpack to your application.
+2. Add this buildpack (after the awscli buildpack).
+3. Configure the .buildpack-s3-downloads file.
+
 ## Usage
 
     $ heroku config:add BUILDPACK_URL=https://github.com/paleozogt/s3-download-buildpack.git
