@@ -74,7 +74,7 @@ aws --version
 while read line; do
 	case "$line" in
 		AWS_*=*)
-			echo "export $line"
+			export $line
 			;;
 		s3://*)
 			IFS=' ' read -r -a lineArray <<< "$line"
