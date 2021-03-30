@@ -81,7 +81,6 @@ while read line; do
 			IFS=' ' read -r -a lineArray <<< "$line"
 			source="${lineArray[0]}"
 			destination="${lineArray[1]}"
-			echo "aws s3 cp $source $destination"
 			aws s3 cp source destination
 			echo "Checksum: $(md5sum $destination)"
 			;;
