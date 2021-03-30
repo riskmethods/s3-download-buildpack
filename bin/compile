@@ -69,7 +69,10 @@ for e in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY; do
   fi
 done
 
-apt-get install awscli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version
 
 while read line; do
 	case "$line" in
