@@ -77,11 +77,12 @@ while read line; do
 			echo "export $line"
 			;;
 		s3://*)
-			echo "-----> processing:$line"
 			IFS=' ' read -r -a lineArray <<< "$line"
 			source="${lineArray[0]}"
 			destination="${lineArray[1]}"
-			aws s3 cp source destination
+			echo "-----> processing: $source -> $destination"
+			mkdir -p "$(dirname "$destination")"
+			aws s3 cp $source $destination
 			echo "Checksum: $(md5sum $destination)"
 			;;
 		*)
