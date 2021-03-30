@@ -69,6 +69,8 @@ for e in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY; do
   fi
 done
 
+apt-get install awscli
+
 while read line; do
 	case "$line" in
 		AWS_*=*)
@@ -80,10 +82,8 @@ while read line; do
 			source="${lineArray[0]}"
 			destination="${lineArray[1]}"
 			echo "Downloading $source into $destination"
-			mkdir -p "$(dirname "$destination")"
-			s3simple get "$source" > $destination
+			aws s3 cp source destination
 			echo "Checksum: $(md5sum $destination)"
-			head $destination
 			;;
 		*)
 			echo "unknown line $line"
