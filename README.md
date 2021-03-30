@@ -12,6 +12,7 @@ buckets. It gives you a way of deploying pre-built code to
     $ cat .buildpack-s3-downloads
     AWS_ACCESS_KEY_ID=AKIA0000000000000000
     AWS_SECRET_ACCESS_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    AWS_DEFAULT_REGION=eu-central-1
     s3://bucket/path/to/tarball.tgz /output_path/filename.tgz
     s3://bucket/path/to/somethingelse.zip /output_path/some_other_file.zip
 
