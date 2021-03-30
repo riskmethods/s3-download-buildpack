@@ -83,6 +83,7 @@ while read line; do
 			mkdir -p "$(dirname "$destination")"
 			s3simple get "$source" > $destination
 			echo "Checksum: $(md5sum $destination)"
+			head $destination
 			;;
 		*)
 			echo "unknown line $line"
